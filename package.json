@@ -1,0 +1,35 @@
+{
+  "name": "griddybox",
+  "version": "1.0.0",
+  "description": "CSS framework that uses CSS Grid with fallback to Flexbox grid",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kurzdor/griddybox.git"
+  },
+  "keywords": [
+    "css",
+    "framework",
+    "grid",
+    "flexbox",
+    "griddybox"
+  ],
+  "author": "Kurzdor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kurzdor/griddybox/issues"
+  },
+  "homepage": "https://github.com/Kurzdor/griddybox#readme",
+  "dependencies": {
+    "gulp": "^4.0.0",
+    "gulp-sass": "^4.0.1"
+  },
+  "devDependencies": {
+    "normalize-scss": "^7.0.1"
+  }
+}
