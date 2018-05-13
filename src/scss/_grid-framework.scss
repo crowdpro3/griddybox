@@ -1,10 +1,25 @@
-@mixin container-lg {
-  width: rem($lg);
-  min-width: rem($lg);
-  max-width: 100%;
+@mixin container {
+  display: block;
+  width: 100%;
   margin: 0 auto;
-  // padding-left: 15px;
-  // padding-right: 15px;
+  padding-left: #{$container-gutter / 2};
+  padding-right: #{$container-gutter / 2};
+
+  @media only screen and ( min-width: 576px ) {
+    max-width: rem($sm);
+  }
+
+  @media only screen and ( min-width: 768px ) {
+    max-width: rem($md);
+  }
+
+  @media only screen and ( min-width: 992px ) {
+    max-width: rem($lg);
+  }
+
+  @media only screen and ( min-width: 1200px ) {
+    max-width: rem($xl);
+  }
 }
 
 @mixin gridnogutter {
@@ -18,170 +33,44 @@
   display: flex;
   display: grid;
   flex-flow: row wrap;
-  // margin-left: -15px;
-  // margin-right: -15px;
-  // grid-gap: 15px;
+  grid-template-columns: repeat(12, 1fr);
+  margin-left: rem(-#{$container-gutter / 2});
+  margin-right: rem(-#{$container-gutter / 2});
 
   > * {
     position: relative;
     width: 100%;
     min-height: 1px;
   }
-
-  @extend gridnogutter;
 }
 
-@mixin row-alt {
+@mixin row-f {
   display: flex;
-  display: grid;
   flex-flow: row wrap;
-  grid-template-columns: repeat(12, 1fr);
-  // margin-left: -15px;
-  // margin-right: -15px;
+  margin-left: -rem(#{$container-gutter / 2});
+  margin-right: -rem(#{$container-gutter / 2});
 
   > * {
+    display: block;
     position: relative;
     width: 100%;
     min-height: 1px;
+    padding-left: rem(15px);
+    padding-right: rem(15px);
   }
 }
 
 @mixin col($columns) {
-  flex: 1 0 auto;
-  grid-template-columns: repeat( $columns, 1fr );
-}
-
-@mixin col-alt($columns) {
+  flex: 0 0 #{(100% / 12) * $columns};
   grid-column: span $columns;
 }
 
-@mixin col-1-11 {
-  grid-template-columns: 1fr 11fr;
+@mixin col-f($columns) {
+  flex: 0 0 #{(100% / 12) * $columns};
 }
 
-@mixin col-2-10 {
-  grid-template-columns: 2fr 10fr;
-}
-
-@mixin col-3-9 {
-  grid-template-columns: 3fr 9fr;
-}
-
-@mixin col-4-8 {
-  grid-template-columns: 4fr 8fr;
-}
-
-@mixin col-5-7 {
-  grid-template-columns: 5fr 7fr;
-}
-
-@mixin col-7-5 {
-  grid-template-columns: 7fr 5fr;
-}
-
-@mixin col-8-4 {
-  grid-template-columns: 8fr 4fr;
-}
-
-@mixin col-9-3 {
-  grid-template-columns: 9fr 3fr;
-}
-
-@mixin col-10-2 {
-  grid-template-columns: 10fr 2fr;
-}
-
-@mixin col-11-1 {
-  grid-template-columns: 11fr 1fr;
-}
-
-@mixin col-f($col) {
-  // padding-left: 15px;
-  // padding-right: 15px;
-  flex: 0 0 calc( 100% / #{$col} );
-  width: 100%;
-}
-
-@mixin col-f-1 {
-  // padding-left: 15px;
-  // padding-right: 15px;
-  flex: 0 0 8.333333%;
-  width: 100%;
-}
-
-@mixin col-f-2 {
-  // padding-left: 15px;
-  // padding-right: 15px;
-  flex: 0 0 16.666667%;
-  width: 100%;
-}
-
-@mixin col-f-3 {
-  // padding-left: 15px;
-  // padding-right: 15px;
-  flex: 0 0 25%;
-  width: 100%;
-}
-
-@mixin col-f-4 {
-  // padding-left: 15px;
-  // padding-right: 15px;
-  flex: 0 0 33.333333%;
-  width: 100%;
-}
-
-@mixin col-f-5 {
-  // padding-left: 15px;
-  // padding-right: 15px;
-  flex: 0 0 41.666667%;
-  width: 100%;
-}
-
-@mixin col-f-6 {
-  // padding-left: 15px;
-  // padding-right: 15px;
-  flex: 0 0 50%;
-  width: 100%;
-}
-
-@mixin col-f-7 {
-  // padding-left: 15px;
-  // padding-right: 15px;
-  flex: 0 0 58.333333%;
-  width: 100%;
-}
-
-@mixin col-f-8 {
-  // padding-left: 15px;
-  // padding-right: 15px;
-  flex: 0 0 66.666667%;
-  width: 100%;
-}
-
-@mixin col-f-9 {
-  // padding-left: 15px;
-  // padding-right: 15px;
-  flex: 0 0 75%;
-  width: 100%;
-}
-
-@mixin col-f-10 {
-  // padding-left: 15px;
-  // padding-right: 15px;
-  flex: 0 0 83.333333%;
-  width: 100%;
-}
-
-@mixin col-f-11 {
-  // padding-left: 15px;
-  // padding-right: 15px;
-  flex: 0 0 91.666667%;
-  width: 100%;
-}
-
-@mixin col-f-12 {
-  // padding-left: 15px;
-  // padding-right: 15px;
-  flex: 0 0 100%;
-  width: 100%;
+@mixin col-f-auto {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0px;
 }
